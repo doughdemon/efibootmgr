@@ -813,8 +813,10 @@ show_boot_vars()
 			size_t text_path_len = 0;
 			ssize_t rc;
 
-			rc = unparse_path(text_path, text_path_len, path,
-				     load_option->file_path_list_length);
+			rc = efidp_print_device_path(text_path,
+						     text_path_len,
+						     (const_efidp)path,
+						     load_option->file_path_list_length);
 			if (rc < 0) {
 				fprintf(stderr, "Could not parse device path: %m\n");
 				exit(1);
@@ -827,8 +829,11 @@ show_boot_vars()
 				fprintf(stderr, "Could not parse device path: %m\n");
 				exit(1);
 			}
-			rc = unparse_path(text_path, text_path_len,
-				path, load_option->file_path_list_length);
+
+			rc = efidp_print_device_path(text_path,
+						     text_path_len,
+						     (const_efidp)path,
+						     load_option->file_path_list_length);
 			if (rc < 0) {
 				fprintf(stderr, "Could not parse device path: %m\n");
 				exit(1);
